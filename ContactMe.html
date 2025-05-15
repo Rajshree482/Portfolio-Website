@@ -8,7 +8,7 @@
     <title>Contact Me</title>
 </head>
 <body>
-    <!-- Background Animation -->
+     <!-- Background Animation -->
     <div class="bg-animation">
         <span></span>
         <span></span>
@@ -16,16 +16,30 @@
         <span></span>
         <span></span>
     </div>
-
     <header>
         <a href="index.html" class="logo">Rajshree</a>
         <nav>
-            <a href="index.html"><i class="fas fa-home"></i> Home</a>
-            <a href="Education.html"><i class="fas fa-graduation-cap"></i> Education</a>
-            <a href="Skills.html"><i class="fas fa-tools"></i> Skills</a>
-            <a href="ContactMe.html" class="active"><i class="fas fa-envelope"></i> Contact</a>
+        <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        <a href="Education.html"><i class="fas fa-graduation-cap"></i> Education</a>
+        <a href="Skills.html"><i class="fas fa-tools"></i> Skills</a>
+        <a href="ContactMe.html" class="active"><i class="fas fa-envelope"></i> Contact</a>
         </nav>
+    
+    <!-- Add this hamburger menu button -->
+    <div class="hamburger-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
     </header>
+
+<!-- Mobile Navigation Menu -->
+    <div class="mobile-nav">
+    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+    <a href="Education.html"><i class="fas fa-graduation-cap"></i> Education</a>
+    <a href="Skills.html"><i class="fas fa-tools"></i> Skills</a>
+    <a href="ContactMe.html" class="active"><i class="fas fa-envelope"></i> Contact</a>
+    </div>
 
     <div class="contact-container">
         <h1 class="page-title">Get In Touch</h1>
@@ -55,22 +69,19 @@
                     </div>
                     
                     <br><br>
-
                     
-
                     <div class="form-group">
-                        <pre>Please take a sec to fill out this super-short feedback form 
-(your secrets are safe with us - it's all anonymous). 
-Your thoughts will help us make our site even better!!
-<a href="https://forms.gle/sKMXuftmh8BVuTpS9"><i class="fas fa-envelope"></i> Feedback</a>
-<i class="fas fa-hand-pointer"></i> Click here to fill a quick feedback form   
-                     </pre>
-                       
-                    </div>
-                    
-                    <br>
+                        <p class="section-subheading mb-6"> Please take a sec to fill out this super-short feedback form 
+                            (your secrets are safe with us - it's all anonymous). 
+                            Your thoughts will help us make our site even better!!
+                            <br>
+                            <a href="https://forms.gle/i3RtUDK2PcvRJF9p9"><i class="fas fa-envelope"></i> Feedback</a>
+                            <br>
+                            <i class="fas fa-hand-pointer"></i> Click here to fill a quick feedback form  
 
-                    <button type="submit" class="submit-btn">Submit</button>
+                    </div>
+                    <br>
+                        <a href="https://forms.gle/i3RtUDK2PcvRJF9p9" class="btn">Submit</a>
                 </form>
             </div>
             
@@ -89,7 +100,7 @@ Your thoughts will help us make our site even better!!
                     <i class="fas fa-envelope"></i>
                     <div class="info-detail">
                         <h4>Email</h4>
-                        <p>rajshree@example.com</p>
+                        <p class="section-subheading">rajshree@example.com</p>
                     </div>
                 </div>
                 
@@ -407,9 +418,9 @@ Your thoughts will help us make our site even better!!
             <a href="ContactMe.html" class="active"><i class="fas fa-envelope"></i> Contact</a>
       </div>
       <div class="social-links">
-        <a href="https://github.com/schr0dy-coder" class="social-btn" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/sujal-kumar-2150b5362/" class="social-btn" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-        <a href="https://www.instagram.com/sujal.grey/" class="social-btn" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://github.com/Rajshree482" class="social-btn" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/rajshree-balsamant-79b003350/" class="social-btn" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.instagram.com/astrate03/" class="social-btn" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
       </div>
     </div>
     <button class="back-to-top" aria-label="Back to Top"><i class="fas fa-arrow-up"></i></button>
@@ -435,7 +446,54 @@ Your thoughts will help us make our site even better!!
             });
   </script>
 
-  
+  <script>
+        // JavaScript for Mobile Navigation
+
+        // Add this to your existing scripts section
+    document.addEventListener('DOMContentLoaded', function() {
+     // Get DOM elements
+    const hamburgerMenu = document.querySelector('.hamburger-menu');
+    const mobileNav = document.querySelector('.mobile-nav');
+    const overlay = document.querySelector('.overlay');
+    
+    // Toggle mobile menu
+    hamburgerMenu.addEventListener('click', function() {
+        hamburgerMenu.classList.toggle('active');
+        mobileNav.classList.toggle('active');
+        overlay.classList.toggle('active');
+        // Prevent body scrolling when menu is open
+        document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+    });
+    
+    // Close menu when clicking overlay
+    overlay.addEventListener('click', function() {
+        hamburgerMenu.classList.remove('active');
+        mobileNav.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+    
+    // Close menu when clicking a link
+    document.querySelectorAll('.mobile-nav a').forEach(function(link) {
+        link.addEventListener('click', function() {
+            hamburgerMenu.classList.remove('active');
+            mobileNav.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    });
+    
+    // Close mobile menu on window resize (if switching to desktop)
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768 && mobileNav.classList.contains('active')) {
+            hamburgerMenu.classList.remove('active');
+            mobileNav.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+});
+    </script>
     
 </body>
 </html>
