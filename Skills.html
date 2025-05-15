@@ -16,16 +16,32 @@
         <span></span>
         <span></span>
     </div>
-
     <header>
         <a href="index.html" class="logo">Rajshree</a>
         <nav>
-            <a href="index.html"><i class="fas fa-home"></i> Home</a>
-            <a href="Education.html"><i class="fas fa-graduation-cap"></i> Education</a>
-            <a href="Skills.html" class="active"><i class="fas fa-tools"></i> Skills</a>
-            <a href="ContactMe.html"><i class="fas fa-envelope"></i> Contact</a>
+        <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        <a href="Education.html"><i class="fas fa-graduation-cap"></i> Education</a>
+        <a href="Skills.html"><i class="fas fa-tools"></i> Skills</a>
+        <a href="ContactMe.html" class="active"><i class="fas fa-envelope"></i> Contact</a>
         </nav>
+    
+    <!-- Add this hamburger menu button -->
+    <div class="hamburger-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
     </header>
+
+<!-- Add these new elements after the header -->
+<!-- Mobile Navigation Menu -->
+    <div class="mobile-nav">
+    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+    <a href="Education.html"><i class="fas fa-graduation-cap"></i> Education</a>
+    <a href="Skills.html"><i class="fas fa-tools"></i> Skills</a>
+    <a href="ContactMe.html" class="active"><i class="fas fa-envelope"></i> Contact</a>
+    </div>
+
 
     <div class="skills-container">
         <h2 class="page-title">MY CAPABILITIES</h2>
@@ -55,7 +71,7 @@
                 <div class="card-inner">
                     <div class="card-front">
                         <i class="fa">&#xf109;</i>
-                        <h3>Web Development</h3>
+                        <h3>Web Development</h3> 
                     </div>
                     <div class="card-back">
                         <i class="fa">&#xf109;</i>
@@ -199,16 +215,33 @@
             
         </div>
 
-
-        
-        
-        <div class="skills-quote">
-            "The only way to do great work is to love what you do. If you haven't found it yet, keep looking. Don't settle."
+    <section class="feature-section" id="features">
+    <div>
+        <div class="section-divider">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
     </div>
-
-
     
+    <div class="feature-container">
+        <!-- Quote box -->
+        <div class="feature-card" data-category="algorithms">
+            <h3 class="feature-title">"The only way to do great work is to love what you do. If you haven't found it yet, keep looking. Don't settle."</h3>
+                <div class="skill-tags">
+                    <span>Explore</span>
+                    <span>Strive</span>
+                    <span>Obtain</span>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    </section>
+
+    </div>
+
+  
 <!-- Fireflies Animation Container -->
 <div class="fireflies-container">
     <div class="firefly"></div>
@@ -534,6 +567,56 @@
                 lastScrollTop = scrollTop;
             });
     </script>
+
+    <script>
+        // JavaScript for Mobile Navigation
+
+        // Add this to your existing scripts section
+    document.addEventListener('DOMContentLoaded', function() {
+     // Get DOM elements
+    const hamburgerMenu = document.querySelector('.hamburger-menu');
+    const mobileNav = document.querySelector('.mobile-nav');
+    const overlay = document.querySelector('.overlay');
+    
+    // Toggle mobile menu
+    hamburgerMenu.addEventListener('click', function() {
+        hamburgerMenu.classList.toggle('active');
+        mobileNav.classList.toggle('active');
+        overlay.classList.toggle('active');
+        // Prevent body scrolling when menu is open
+        document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+    });
+    
+    // Close menu when clicking overlay
+    overlay.addEventListener('click', function() {
+        hamburgerMenu.classList.remove('active');
+        mobileNav.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+    
+    // Close menu when clicking a link
+    document.querySelectorAll('.mobile-nav a').forEach(function(link) {
+        link.addEventListener('click', function() {
+            hamburgerMenu.classList.remove('active');
+            mobileNav.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    });
+    
+    // Close mobile menu on window resize (if switching to desktop)
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768 && mobileNav.classList.contains('active')) {
+            hamburgerMenu.classList.remove('active');
+            mobileNav.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+});
+    </script>
+
 
 </body>
 </html>
