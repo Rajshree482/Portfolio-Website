@@ -8,7 +8,7 @@
     <title>My Education</title>
 </head>
 <body>
-    <!-- Background Animation -->
+     <!-- Background Animation -->
     <div class="bg-animation">
         <span></span>
         <span></span>
@@ -16,48 +16,74 @@
         <span></span>
         <span></span>
     </div>
-
     <header>
         <a href="index.html" class="logo">Rajshree</a>
         <nav>
-            <a href="index.html"><i class="fas fa-home"></i> Home</a>
-            <a href="Education.html" class="active"><i class="fas fa-graduation-cap"></i> Education</a>
-            <a href="Skills.html"><i class="fas fa-tools"></i> Skills</a>
-            <a href="ContactMe.html"><i class="fas fa-envelope"></i> Contact</a>
+        <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        <a href="Education.html"><i class="fas fa-graduation-cap"></i> Education</a>
+        <a href="Skills.html"><i class="fas fa-tools"></i> Skills</a>
+        <a href="ContactMe.html" class="active"><i class="fas fa-envelope"></i> Contact</a>
         </nav>
+    
+    <!-- Add this hamburger menu button -->
+    <div class="hamburger-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
     </header>
+
+
+<!-- Mobile Navigation Menu -->
+    <div class="mobile-nav">
+    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+    <a href="Education.html"><i class="fas fa-graduation-cap"></i> Education</a>
+    <a href="Skills.html"><i class="fas fa-tools"></i> Skills</a>
+    <a href="ContactMe.html" class="active"><i class="fas fa-envelope"></i> Contact</a>
+    </div>
+
+
+
 
     <div class="education-container">
         <h1 class="page-title">MY EDUCATION</h1>
         
-        <div class="education-bio"><pre>Hii there! This is Rajshree... and My Education goes as follows:
-I completed my 12th from <b>><i>KENDRIYA VIDYALAYA NO.1 BHUBANESWAR</i></b>
-and currently pursuing my <b>B.Tech Computer science Degree in
-<i>"Institute of Technical Education and Research (ITER)"</i></b></pre>
-            
+        <div class="education-bio">
+            <p class="section-subheading mb-6"> Hii there! This is Rajshree... and My Education goes as follows:
+                <br>
+                I completed my 12th from <b>><i>Kendriya Vidyalaya NO.1 Bhubaneswar</i></b>
+                and <br> I am currently pursuing my <b>B.Tech Computer science Degree in
+                <i>"Institute of Technical Education and Research (ITER)"
+            </p>
         </div>
         
         <div class="education-timeline clearfix">
             <div class="timeline-item" style="--i:1">
                 <div class="timeline-date">2019 - 2024</div>
-                <div class="timeline-school">> Kendriya Vidyalaya No.1 Bhubaneswar</div>
+                <div class="timeline-school">>Kendriya Vidyalaya No.1 Bhubaneswar</div>
                 <div class="timeline-degree">Senior Secondary Education</div>
-                <div class="timeline-description">
+                <div><p class="section-subheading mb-6">
                     Completed 12th grade with distinction, focusing on science and mathematics.
                     Participated in various extracurricular activities and competitions.
+                    </p>
                 </div>
             </div>
+
             
             <div class="timeline-item" style="--i:2">
                 <div class="timeline-date">2024 - Present</div>
                 <div class="timeline-school">> Institute of Technical Education and Research (ITER)</div>
                 <div class="timeline-degree">Bachelor of Technology</div>
-                <div class="timeline-description">
+                <div><p class="section-subheading mb-6">
                     Currently pursuing B.Tech with focus on computer science and web development.
                     Developing skills in various programming languages and design tools.
+                    </p>
                 </div>
             </div>
         </div>
+
+
+        
     </div>
 
     
@@ -367,5 +393,54 @@ and currently pursuing my <b>B.Tech Computer science Degree in
                 lastScrollTop = scrollTop;
             });
     </script>
+   <script>
+        // JavaScript for Mobile Navigation
+
+        // Add this to your existing scripts section
+    document.addEventListener('DOMContentLoaded', function() {
+     // Get DOM elements
+    const hamburgerMenu = document.querySelector('.hamburger-menu');
+    const mobileNav = document.querySelector('.mobile-nav');
+    const overlay = document.querySelector('.overlay');
+    
+    // Toggle mobile menu
+    hamburgerMenu.addEventListener('click', function() {
+        hamburgerMenu.classList.toggle('active');
+        mobileNav.classList.toggle('active');
+        overlay.classList.toggle('active');
+        // Prevent body scrolling when menu is open
+        document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+    });
+    
+    // Close menu when clicking overlay
+    overlay.addEventListener('click', function() {
+        hamburgerMenu.classList.remove('active');
+        mobileNav.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+    
+    // Close menu when clicking a link
+    document.querySelectorAll('.mobile-nav a').forEach(function(link) {
+        link.addEventListener('click', function() {
+            hamburgerMenu.classList.remove('active');
+            mobileNav.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    });
+    
+    // Close mobile menu on window resize (if switching to desktop)
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768 && mobileNav.classList.contains('active')) {
+            hamburgerMenu.classList.remove('active');
+            mobileNav.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+});
+    </script>
+                    
 </body>
 </html>
