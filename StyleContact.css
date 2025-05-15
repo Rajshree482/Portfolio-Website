@@ -9,21 +9,22 @@
 }
 
 body {
-    background-color: black;
+    background-color: #0f0f1a;
     color: white;
     padding-top: 100px;
     min-height: 100vh;
     overflow-x: hidden;
+    background: linear-gradient(to bottom, #0f0f1a, #1a1a2e);
 }
 
 /* Header Import - place this in a separate file later if needed */
 header {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     padding: 20px 9%;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(15, 15, 26, 0.9);
     backdrop-filter: blur(10px);
     display: flex;
     justify-content: space-between;
@@ -36,11 +37,13 @@ header {
 .logo {
     font-size: 3rem;
     font-weight: 800;
+    padding-right: 2rem; ;
     color: #b74b4b;
     cursor: pointer;
     transition: 0.5s ease;
     text-transform: uppercase;
     text-shadow: 0 0 10px rgba(183, 75, 75, 0.5);
+    text-decoration: none;
 }
 
 .logo:hover {
@@ -145,9 +148,10 @@ nav a.active {
     background: rgba(26, 26, 26, 0.8);
     border-radius: 15px;
     padding: 30px;
+    background-color: #250101;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    border-left: 3px solid #b74b4b;
-    border-bottom: 3px solid #b74b4b;
+    border-left: 3px solid #8a0909;
+    border-bottom: 3px solid #8a0909;
     animation: slideInRight 1s ease forwards;
     opacity: 0;
 }
@@ -229,7 +233,7 @@ nav a.active {
     background: rgba(183, 75, 75, 0.1);
     border-radius: 50%;
     font-size: 2.5rem;
-    color: #b74b4b;
+    color: #0db8e3;
     transition: all
 }
 
@@ -282,6 +286,50 @@ nav a.active {
   justify-content: center;
   gap: 1rem;
 }
+
+
+/* submit button styling */
+
+.btn {
+    display: inline-block;
+    padding: 0.2rem 0.4rem;
+    background-color: black;
+    border-radius: 4rem;
+    color: #b74b4b;
+    letter-spacing: 0.3rem;
+    font-weight: 600;
+    border: 2px solid #b74b4b;
+    transition: 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 0 10px #b74b4b, 0 0 20px #b74b4b;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    /* hover selection */
+    background-color: #b74b4b; 
+    transition: 0.3s ease;
+    z-index: -1;
+}
+
+.btn:hover::before {
+    width: 100%;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    color: black;
+    box-shadow: 0 0 25px #b74b4b;
+}
+
 
 /* Back to Top Button */
 .back-to-top {
@@ -353,4 +401,151 @@ nav a.active {
                 0 0 50px 15px rgba(255, 140, 0, 0.3);
     z-index: 6;
 }
+
+
+
+
+
+/* Responsive Navigation Bar Styles */
+
+/* Existing styles remain unchanged */
+
+/* Hamburger menu button - hidden by default */
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    cursor: pointer;
+    z-index: 150;
+}
+
+.hamburger-menu span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: #b74b4b;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+/* Mobile menu styles - initially hidden */
+.mobile-nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    transition: right 0.5s ease;
+    z-index: 120;
+    padding: 2rem;
+    border-left: 3px solid #8a0909;
+}
+
+.mobile-nav a {
+    font-size: 2rem;
+    color: white;
+    text-decoration: none;
+    transition: 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-bottom: 3px solid transparent;
+}
+
+.mobile-nav a:hover,
+.mobile-nav a.active {
+    color: #b74b4b;
+    border-bottom: 3px solid #b74b4b;
+    text-shadow: 0 0 10px rgba(183, 75, 75, 0.5);
+}
+
+/* Overlay when mobile menu is open */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 110;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease;
+}
+
+/* Responsive media queries */
+@media (max-width: 1024px) {
+    .logo {
+        font-size: 2.5rem;
+    }
+    
+    nav a {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 15px 5%;
+    }
+    
+    .logo {
+        font-size: 2.2rem;
+        padding-right: 1rem;
+    }
+    
+    /* Hide desktop nav and show hamburger menu */
+    nav {
+        display: none;
+    }
+    
+    .hamburger-menu {
+        display: flex;
+    }
+    
+    /* When mobile menu is active */
+    .mobile-nav.active {
+        right: 0;
+    }
+    
+    .overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    /* Hamburger menu animation when active */
+    .hamburger-menu.active span:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+    }
+    
+    .hamburger-menu.active span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .hamburger-menu.active span:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 1.8rem;
+    }
+    
+    .mobile-nav {
+        width: 85%;
+    }
+    
+    .mobile-nav a {
+        font-size: 1.8rem;
+    }
+}
+
 
