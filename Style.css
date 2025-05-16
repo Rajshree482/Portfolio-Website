@@ -95,6 +95,26 @@ nav a.active {
     text-shadow: 0 0 10px rgba(183, 75, 75, 0.5);
 }
 
+nav a::after{
+    content: '';
+    width: 0%;
+    height: 3px;
+    background: #921212;
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    transition: 0.5s;
+
+}
+nav a.active::after {
+    width: 100%;
+}
+nav a:hover::after {
+    width: 100%;
+}
+
+
+
 section {
     min-height: 100vh;
     padding-block-end: 5rem 9% 5rem;
@@ -705,7 +725,7 @@ span {
     grid-template-columns: repeat(auto-fill, minmax(250px, 2fr));
     grid-auto-rows: 5px;
     grid-gap: 1rem;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
 }
 
 .gallery-item {
@@ -1363,6 +1383,15 @@ span {
 
 
 
+
+
+
+
+
+
+
+
+
 /* ---------------------------------------------------------------------- */
 /* Page Reveal Animation Styles */
 
@@ -1732,4 +1761,11 @@ html {
     left: 100%;
   }
 }
+
+
+
+
+
+
+
 
