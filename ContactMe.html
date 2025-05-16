@@ -497,77 +497,7 @@
 
 
 //----------------------------------------------------------------------
-
-// Add this JavaScript to your existing script.js file or create a new one
-
-document.addEventListener('DOMContentLoaded', function() {
-    // Get all navigation links
-    const navLinks = document.querySelectorAll('nav ul li a');
-    
-    // Function to set active link based on current page or scroll position
-    function setActiveLink() {
-        // First check if we're on a separate page (like about.html, projects.html, etc.)
-        const currentPath = window.location.pathname;
-        const pageName = currentPath.split('/').pop().split('.')[0];
-        
-        // If we're on the main page or index page, determine active section by scroll position
-        if (currentPath === '/' || currentPath.includes('index') || !pageName) {
-            // Get the scroll position
-            const scrollPosition = window.scrollY;
-            
-            // Get all sections on the page
-            const sections = document.querySelectorAll('section');
-            
-            // Find the current section based on scroll position
-            let currentSection = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - 100; // Offset for better UX
-                const sectionHeight = section.offsetHeight;
-                
-                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                    currentSection = section.id;
-                }
-            });
-            
-            // Remove active class from all links
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-            });
-            
-            // Add active class to current link
-            if (currentSection) {
-                navLinks.forEach(link => {
-                    if (link.getAttribute('href').includes(currentSection)) {
-                        link.classList.add('active');
-                    }
-                });
-            } else {
-                // If no section is active (e.g., at the very top), 
-                // make the first link active (likely "Home")
-                navLinks[0].classList.add('active');
-            }
-        } else {
-            // For separate pages, set active based on page name
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                const linkHref = link.getAttribute('href');
-                
-                if (linkHref.includes(pageName)) {
-                    link.classList.add('active');
-                }
-            });
-        }
-    }
-    
-    // Initial call to set the active link when page loads
-    setActiveLink();
-    
-    // Set active link on scroll
-    window.addEventListener('scroll', setActiveLink);
-    
-    // Also update when the page is resized (in case layout changes)
-    window.addEventListener('resize', setActiveLink);
-});
+      
     </script>
 
   
