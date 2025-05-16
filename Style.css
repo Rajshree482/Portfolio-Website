@@ -725,7 +725,7 @@ span {
     grid-template-columns: repeat(auto-fill, minmax(250px, 2fr));
     grid-auto-rows: 5px;
     grid-gap: 1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
 }
 
 .gallery-item {
@@ -1524,37 +1524,6 @@ span {
   }
 }
 
-/* Animated dots for loading indicator */
-.loading-dots {
-  position: absolute;
-  bottom: 20%;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.loading-dots span {
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: white;
-  margin: 0 3px;
-  opacity: 0;
-  animation: fadeInOut 1.4s infinite;
-}
-
-.loading-dots span:nth-child(2) {
-  animation-delay: 0.2s;
-}
-
-.loading-dots span:nth-child(3) {
-  animation-delay: 0.4s;
-}
-
-@keyframes fadeInOut {
-  0%, 100% { opacity: 0; }
-  50% { opacity: 1; }
-}
 
 /* Section reveal effect */
 .section-reveal {
@@ -1628,22 +1597,7 @@ span {
   transform-origin: right;
 }
 
-/* Different reveal animations for different parts of the site */
-.home-img .img-reveal {
-  transform: translateX(-30px);
-}
 
-.home-img .img-revealed {
-  transform: translateX(0);
-}
-
-.gallery-item .img-reveal {
-  transform: scale(1.05);
-}
-
-.gallery-item .img-revealed {
-  transform: scale(1);
-}
 
 /* Enhanced hover effects with the same color scheme */
 .feature-card:hover {
