@@ -10,7 +10,7 @@
 <body>
     <div class="loading-animation" id="loadingAnimation" style="animation: 0.5s ease 0s 1 normal forwards running fadeIn;">
       <div class="logo-animation">
-        <span class="red-text" style="animation: 1s ease 0s 1 normal forwards running moveRed;">RED</span><span class="iva-text" style="animation: 1s ease 0s 1 normal forwards running moveIva;">IVA</span>
+        <span class="red-text" style="animation: 1s ease 0s 1 normal forwards running moveRed;">My</span><span class="iva-text" style="animation: 1s ease 0s 1 normal forwards running moveIva;">Portfolio</span>
       </div>
     </div>
     <!-- Background Animation -->
@@ -1339,13 +1339,13 @@ function createPageReveal() {
     const logoText = document.createElement('div');
     logoText.className = 'logo-text';
     
-    const redPart = document.createElement('span');
+    const redPart = document.createElement('div');
     redPart.className = 'red-part';
-    redPart.textContent = 'My Port';
+    redPart.textContent = 'My';
     
-    const ivaPart = document.createElement('span');
+    const ivaPart = document.createElement('div');
     ivaPart.className = 'iva-part';
-    ivaPart.textContent = 'folio';
+    ivaPart.textContent = 'Portfolio';
     
     logoText.appendChild(redPart);
     logoText.appendChild(ivaPart);
@@ -1368,7 +1368,6 @@ function applyContentRevealClasses() {
         '.home',
         '.about-me-section',
         '.feature-section',
-        '.photo-gallery-section'
     ];
     
     contentSections.forEach((selector, index) => {
@@ -1401,9 +1400,7 @@ function initSectionReveal() {
     const revealSections = [
         '.about-me-section',
         '.feature-section',
-        '.section-header',
-        '.gallery-container',
-        '.photo-gallery-section'
+        '.section-header',  
     ];
     
     revealSections.forEach(selector => {
@@ -1434,102 +1431,6 @@ function initSectionReveal() {
     });
 }
 
-// Add a pulse reveal effect for images when they come into view
-function initImageReveal() {
-    const imgObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('img-revealed');
-                imgObserver.unobserve(entry.target);
-            }
-        });
-    }, {
-        threshold: 0.2,
-        rootMargin: '0px 0px -50px 0px'
-    });
-    
-    // Apply to all images in sections that should have this effect
-    document.querySelectorAll('.gallery-item img, .home-img img').forEach(img => {
-        img.classList.add('img-reveal');
-        imgObserver.observe(img);
-    });
-}
-
-// Initialize image reveal effect
-window.addEventListener('load', initImageReveal);
-
-
-// --------------------------------------------------
-// Add this JavaScript to your existing script.js file or create a new one
-
-document.addEventListener('DOMContentLoaded', function() {
-    // Get all navigation links
-    const navLinks = document.querySelectorAll('nav ul li a');
-    
-    // Function to set active link based on current page or scroll position
-    function setActiveLink() {
-        // First check if we're on a separate page (like about.html, projects.html, etc.)
-        const currentPath = window.location.pathname;
-        const pageName = currentPath.split('/').pop().split('.')[0];
-        
-        // If we're on the main page or index page, determine active section by scroll position
-        if (currentPath === '/' || currentPath.includes('index') || !pageName) {
-            // Get the scroll position
-            const scrollPosition = window.scrollY;
-            
-            // Get all sections on the page
-            const sections = document.querySelectorAll('section');
-            
-            // Find the current section based on scroll position
-            let currentSection = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - 100; // Offset for better UX
-                const sectionHeight = section.offsetHeight;
-                
-                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                    currentSection = section.id;
-                }
-            });
-            
-            // Remove active class from all links
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-            });
-            
-            // Add active class to current link
-            if (currentSection) {
-                navLinks.forEach(link => {
-                    if (link.getAttribute('href').includes(currentSection)) {
-                        link.classList.add('active');
-                    }
-                });
-            } else {
-                // If no section is active (e.g., at the very top), 
-                // make the first link active (likely "Home")
-                navLinks[0].classList.add('active');
-            }
-        } else {
-            // For separate pages, set active based on page name
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                const linkHref = link.getAttribute('href');
-                
-                if (linkHref.includes(pageName)) {
-                    link.classList.add('active');
-                }
-            });
-        }
-    }
-    
-    // Initial call to set the active link when page loads
-    setActiveLink();
-    
-    // Set active link on scroll
-    window.addEventListener('scroll', setActiveLink);
-    
-    // Also update when the page is resized (in case layout changes)
-    window.addEventListener('resize', setActiveLink);
-});
 </script>
 
 
