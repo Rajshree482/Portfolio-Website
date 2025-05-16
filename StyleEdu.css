@@ -71,6 +71,27 @@ nav a.active {
     text-shadow: 0 0 10px rgba(183, 75, 75, 0.5);
 }
 
+
+
+nav a::after{
+    content: '';
+    width: 0%;
+    height: 3px;
+    background: #921212;
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    transition: 0.5s;
+
+}
+nav a.active::after {
+    width: 100%;
+}
+nav a:hover::after {
+    width: 100%;
+}
+
+
 /* Education Page Content */
 .education-container {
     height: auto;
